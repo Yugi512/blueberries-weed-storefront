@@ -1,0 +1,3 @@
+cart must contain all the items that a user adds to their cart so figure out to do that with cookies or the database, like amazon holds it in your account, and we should make it mandatory to have an account so that everyone who shops has their purchase history saved
+- cart page is just like the amazon cart page but we make it prettier and more aesthetically pleasing to look at
+- proceed to checkout is a redirect to the checkout page

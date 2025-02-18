@@ -1,0 +1,15 @@
+should be a mix of the jetbrains, amazon and walmart account profile display,
+side bar showing the sections and as you scroll it changes from the sidebar section to the one you moved into, like in google docs where you can scroll down to a chapter, or when youre scrolling and hit that chapter it tells you
+top
+have a section that shows the past orders
+middle
+a section that shows username, email, password
+a section that shows first name, last name, address
+
+the user should be able to change all of these so figure out a way to update it
+// reviews will be implemented after we figure out a way to make it visible and store a table, but this is after we are done and have fixed up all the other projects to look better or work better than what they are now
+
+bottom
+back to home link
+to strains link
+to menu stains link

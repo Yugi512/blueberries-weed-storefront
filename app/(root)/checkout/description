@@ -1,0 +1,3 @@
+- make it like the amazon checkout page but make it fit the aesthetic and also make it so that we can use different forms of payments
+- we will use stripe so it wont matter that much
+- make it so that it updates the database and created the order and its order history and then attaches it to the userid
