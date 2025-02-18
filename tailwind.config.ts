@@ -49,13 +49,29 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			blue: {
+				100: "#738FA7",
+				500: "#0C4160",
+				700: "#163B50",
+				800: "#05263B",
+				900: "#071330",
+				1000: "#000033",
+				1100: "#02001c"
+			},
+			slate: {
+				300: "#AEB8C4",
+				500: "#9CA6B8"
+			},
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		screens:{
+			xs: "480px"
+		  }
   	}
   },
   plugins: [require("tailwindcss-animate")],

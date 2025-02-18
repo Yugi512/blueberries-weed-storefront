@@ -137,7 +137,7 @@ export const createUserPayment = async (InsertUserPayment: InsertUserPayment) =>
     await db
         .insert(userPaymentTable)
         .values(InsertUserPayment)
-        .onConflictDoUpdate({target: userPaymentTable.userID, set: InsertUserPayment})
+        .onConflictDoNothing()
         .returning();
 
 // update
