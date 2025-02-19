@@ -1,8 +1,10 @@
-import NextAuth, {User} from "next-auth";
+import NextAuth, { User as NextAuthUser, User } from "next-auth";
 
 import CredentialsProvider from "next-auth/providers/credentials";
-import {getUserByEmail} from "@/database";
 import {compare} from "bcryptjs";
+import {db} from "@/database";
+import {userTable} from "@/database/schema";
+import {eq} from "drizzle-orm";
 
 
 export const { handlers, signIn, signOut, auth} = NextAuth({
@@ -15,9 +17,12 @@ export const { handlers, signIn, signOut, auth} = NextAuth({
             if(!credentials.email || !credentials.password){
                 return null;
             }
-            const user: any = []
 
-            getUserByEmail(credentials.email.toString()).then(account => user.push(account) );
+            const user = await db
+                .select()
+                .from(userTable)
+                .where(eq(userTable.email, credentials.email.toString()))
+                .limit(1);
 
             if(user.length === 0) return null;
 

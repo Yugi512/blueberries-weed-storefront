@@ -1,13 +1,5 @@
 "use client";
 
-interface AuthCredentials {
-    username: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string;
-}
-
 import AuthForm from "@/components/AuthForm";
 import { signUp } from "@/lib/actions/auth";
 import { signUpSchema } from "@/lib/validations";
