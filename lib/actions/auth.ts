@@ -1,12 +1,19 @@
 'use server';
 
+import {userTable} from "@/database/schema";
+
 interface AuthCredentials {
     username: string,
+    firstName: string,
+    lastName: string,
     email: string,
     password: string;
 }
 
 import { signIn } from "@/auth";
+import {db} from "@/database";
+import {eq} from "drizzle-orm";
+import {hash} from "bcryptjs";
 
 
 export const signInWithCredentials  = async (params: Pick<AuthCredentials, "email" | "password">,) => {
@@ -29,8 +36,35 @@ export const signInWithCredentials  = async (params: Pick<AuthCredentials, "emai
     }
 }
 
-export const signUp = async (params: any) => {
-    const {username,email, password} = params;
+export const signUp = async (params: AuthCredentials) => {
+    const {username,email,password, firstName, lastName} = params
 
+    const existingUser = await db.select()
+        .from(userTable)
+        .where(eq(userTable.email,email))
+        .limit(1)
+
+    if(existingUser.length > 0){
+        return { success: false, error: "User already exists"};
+    }
+
+    const hashedPassword = await hash(password,16)
+
+    try{
+        await db.insert(userTable).values({
+            username,
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword
+        })
+
+        await signInWithCredentials({email,password});
+
+        return {success:true}
+    }catch(error){
+        console.error("Sign up error: ", error)
+        return { success: false, error: "Sign up error"}
+    }
 
 }

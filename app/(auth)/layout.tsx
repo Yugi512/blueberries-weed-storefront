@@ -1,12 +1,12 @@
 import {ReactNode} from "react";
 import Image from "next/image";
-// import {auth} from "@/auth"
-// import {redirect} from "next/navigation";
+import {auth} from "@/auth"
+import {redirect} from "next/navigation";
 
 const Layout = ({children}: {children: ReactNode}) => {
     // const session = await auth()
-
-    //if (session) redirect("/profile")
+    //
+    // if (session) redirect("/profile")
 
     return (
         <main className="relative flex flex-col-reverse text-light-100 sm:flex-row">

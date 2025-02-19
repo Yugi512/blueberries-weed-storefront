@@ -1,4 +1,4 @@
-import {DATABASE_URL} from "@/config/config";
+import config from "@/config/config"
 import {drizzle} from "drizzle-orm/node-postgres";
 import {
     cartItemTable, discountTable, effectsTable, orderDetailTable, orderItemsTable,
@@ -10,7 +10,7 @@ import {
 } from "./schema";
 import {eq, InferSelectModel, InferInsertModel} from "drizzle-orm"
 
-export const db = drizzle(DATABASE_URL!);
+export const db = drizzle(config.env.DATABASE_URL!);
 // so when accessing the database using queries, as long as they are linked we are able to access the information that they are connected to as in check drizzle studio to see the relations and constantly debug lol
 // May have to write more queries depending on the circumstance ,or I might as well do it inline tbh
 // CRUD operation queries for all main tables
